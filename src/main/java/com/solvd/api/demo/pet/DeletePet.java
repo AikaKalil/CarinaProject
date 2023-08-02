@@ -14,9 +14,9 @@ import com.zebrunner.carina.utils.config.Configuration;
 @ResponseTemplatePath(path="api/pet/_delete/rs.json")
 @SuccessfulHttpStatus(status= HttpResponseStatusType.OK_200)
 public class DeletePet extends AbstractApiMethodV2 {
-    public DeletePet(int petId){
+    public DeletePet(String petId){
         replaceUrlPlaceholder("base_url", Configuration.getRequired("url"));
         replaceUrlPlaceholder("base_path", Configuration.getRequired("path"));
-        replaceUrlPlaceholder("endpoint",String.valueOf(petId));
+        replaceUrlPlaceholder("endpoint",petId);
     }
 }

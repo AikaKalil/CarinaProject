@@ -1,4 +1,5 @@
+com/solvd/api/pet/GetPetTest.class
 com/solvd/api/pet/PostPetTest.class
 com/solvd/api/pet/DeletePetTest.class
 com/solvd/api/pet/FindPetByStatusTest.class
-com/solvd/api/pet/GetPetTest.class
+com/solvd/api/pet/DeleteInvalidPetTest.class

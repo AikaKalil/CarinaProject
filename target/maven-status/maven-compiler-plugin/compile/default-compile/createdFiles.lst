@@ -1,4 +1,5 @@
 com/solvd/api/demo/pet/GetPet.class
+com/solvd/api/demo/pet/DeleteInvalidPet.class
 com/solvd/api/demo/pet/TestDataProvider.class
 com/solvd/api/demo/pet/FindPetByStatus.class
 com/solvd/api/demo/pet/DeletePet.class

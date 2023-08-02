@@ -13,7 +13,8 @@ import com.zebrunner.carina.utils.config.Configuration;
 public class PostPet extends AbstractApiMethodV2 {
 
     public PostPet(){
-        replaceUrlPlaceholder("base_url", Configuration.getRequired("pet_url"));
-        replaceUrlPlaceholder("base_path",Configuration.getRequired("pet_path"));
+        replaceUrlPlaceholder("base_url", Configuration.getRequired("url"));
+        replaceUrlPlaceholder("base_path",Configuration.getRequired("path"));
+
     }
 }

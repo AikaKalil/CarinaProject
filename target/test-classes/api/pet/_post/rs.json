@@ -1,10 +1,10 @@
 {
-  "id": "${pet_id}",
+  "id": "1233",
   "category": {
     "id": 1,
     "name": "Dogs"
   },
-  "name": "${pet_name}",
+  "name": "Fluffy",
   "photoUrls": [
     "https://example.com/pet12345/photo1.jpg",
     "https://example.com/pet12345/photo2.jpg"
@@ -19,6 +19,5 @@
       "name": "Playful"
     }
   ],
-  "status": "${pet_status}"
+  "status": "sold"
 }
-

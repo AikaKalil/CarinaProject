@@ -1,11 +1,10 @@
-[
-  {
-    "id": "${pet_id}",
+ {
+    <#if pet_id??> "id": "${pet_id}",</#if>
     "category": {
       "id": 1,
       "name": "Dogs"
     },
-    "name": "${pet_name}",
+    <#if pet_name??>"name": "${pet_name}",</#if>
     "photoUrls": [
       "https://example.com/pet12345/photo1.jpg",
       "https://example.com/pet12345/photo2.jpg"
@@ -20,7 +19,5 @@
         "name": "Playful"
       }
     ],
-    "status": "${pet_status}"
+    <#if pet_status??>"status": "${pet_status}",</#if>
   }
-
-]
