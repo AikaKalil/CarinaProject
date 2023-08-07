@@ -1,5 +1,5 @@
 {
   "code": 200,
   "type": "unknown",
-  <#if message??>"message": "${invalidId}", </#if>
+  "message": "${pet_id}"
 }

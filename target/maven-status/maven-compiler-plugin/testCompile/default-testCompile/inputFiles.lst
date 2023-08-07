@@ -1,5 +1,2 @@
-/Users/aizhamalmamatkalilkyzy/IdeaProjects/api-testing/src/test/java/com/solvd/api/pet/DeleteInvalidPetTest.java
-/Users/aizhamalmamatkalilkyzy/IdeaProjects/api-testing/src/test/java/com/solvd/api/pet/FindPetByStatusTest.java
-/Users/aizhamalmamatkalilkyzy/IdeaProjects/api-testing/src/test/java/com/solvd/api/pet/GetPetTest.java
-/Users/aizhamalmamatkalilkyzy/IdeaProjects/api-testing/src/test/java/com/solvd/api/pet/DeletePetTest.java
-/Users/aizhamalmamatkalilkyzy/IdeaProjects/api-testing/src/test/java/com/solvd/api/pet/PostPetTest.java
+/Users/aizhamalmamatkalilkyzy/IdeaProjects/api-testing/src/test/java/com/solvd/gui/etsy/WebTest.java
+/Users/aizhamalmamatkalilkyzy/IdeaProjects/api-testing/src/test/java/com/solvd/api/pet/TestPet.java

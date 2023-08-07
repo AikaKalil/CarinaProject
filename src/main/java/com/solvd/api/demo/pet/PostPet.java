@@ -12,9 +12,9 @@ import com.zebrunner.carina.utils.config.Configuration;
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
 public class PostPet extends AbstractApiMethodV2 {
 
-    public PostPet(){
-        replaceUrlPlaceholder("base_url", Configuration.getRequired("url"));
-        replaceUrlPlaceholder("base_path",Configuration.getRequired("path"));
+    public PostPet(String id){
+        replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));
+        replaceUrlPlaceholder("base_path",Configuration.getRequired("api_path"));
 
     }
 }

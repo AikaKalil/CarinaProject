@@ -1,24 +1,23 @@
 {
-    <#if invalidId??> "id": "${invalidId}",</#if>
-    "category": {
-      "id": 1,
-      "name": "Dogs"
+  <#if invalid_id??> "id": "${invalid_id}",</#if>
+  "category": {
+    "id": "skip",
+    "name": "skip"
+  },
+  <#if pet_name??>"name": "${pet_name}",</#if>
+  "photoUrls": [
+    "skip",
+    "skip"
+  ],
+  "tags": [
+    {
+      "id": "skip",
+      "name": "skip"
     },
-    "id": "$Fluffy",
-    "photoUrls": [
-      "https://example.com/pet12345/photo1.jpg",
-      "https://example.com/pet12345/photo2.jpg"
-    ],
-    "tags": [
-      {
-        "id": 101,
-        "name": "Friendly"
-      },
-      {
-        "id": 102,
-        "name": "Playful"
-      }
-    ],
-    "id": "sold"
-  }
-
+    {
+      "id": "skip",
+      "name": "skip"
+    }
+  ],
+  <#if pet_status??>"status": "${pet_status}",</#if>
+}

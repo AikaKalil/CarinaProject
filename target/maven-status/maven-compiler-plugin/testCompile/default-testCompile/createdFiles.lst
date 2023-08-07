@@ -1,5 +1,2 @@
-com/solvd/api/pet/GetPetTest.class
-com/solvd/api/pet/PostPetTest.class
-com/solvd/api/pet/DeletePetTest.class
-com/solvd/api/pet/FindPetByStatusTest.class
-com/solvd/api/pet/DeleteInvalidPetTest.class
+com/solvd/gui/etsy/WebTest.class
+com/solvd/api/pet/TestPet.class

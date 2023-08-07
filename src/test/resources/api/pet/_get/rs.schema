@@ -1,56 +1,84 @@
 {
-  "$schema": "http://json-schema.org/draft-03/schema#",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "integer",
-        "format": "int64"
-      },
-      "category": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
         },
-        "required": true
-      },
-      "name": {
-        "type": "string"
-      },
-      "photoUrls": {
-        "type": "array",
-        "items": {
+        "name": {
           "type": "string"
         }
       },
-      "tags": {
-        "type": "array",
-        "items": {
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "photoUrls": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": [
+        {
           "type": "object",
           "properties": {
             "id": {
-              "type": "integer",
-              "format": "int64"
+              "type": "integer"
             },
             "name": {
               "type": "string"
             }
           },
-          "required": true
+          "required": [
+            "id",
+            "name"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name"
+          ]
         }
-      },
-      "status": {
-        "type": "string",
-        "enum": ["available", "pending", "sold"]
-      }
+      ]
     },
-    "required": true
-  }
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "category",
+    "name",
+    "photoUrls",
+    "tags",
+    "status"
+  ]
 }

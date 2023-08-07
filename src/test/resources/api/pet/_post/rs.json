@@ -1,23 +1,21 @@
 {
-  "id": "1233",
+  <#if pet_id??> "id": "${pet_id}",</#if>
   "category": {
-    "id": 1,
-    "name": "Dogs"
+    "id": "skip",
+    "name": "skip"
   },
-  "name": "Fluffy",
+  <#if pet_name??> "name": "${pet_name}",</#if>
   "photoUrls": [
-    "https://example.com/pet12345/photo1.jpg",
-    "https://example.com/pet12345/photo2.jpg"
+    "skip"
   ],
   "tags": [
     {
-      "id": 101,
-      "name": "Friendly"
+      "id": "skip",
+      "name": "skip"
     },
     {
-      "id": 102,
-      "name": "Playful"
+      "id": "skip",
+      "name": "skip"
     }
   ],
-  "status": "sold"
-}
+  <#if pet_status??> "status": "${pet_status}",</#if>

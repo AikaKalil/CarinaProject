@@ -11,9 +11,9 @@ import com.zebrunner.carina.utils.config.Configuration;
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
 public class FindPetByStatus extends AbstractApiMethodV2 {
     public FindPetByStatus(String currentStatus) {
-        replaceUrlPlaceholder("base_url", Configuration.getRequired("url"));
-        replaceUrlPlaceholder("base_path", Configuration.getRequired("path"));
-        replaceUrlPlaceholder("endpoint",Configuration.getRequired("status"));
+        replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));
+        replaceUrlPlaceholder("base_path", Configuration.getRequired("api_path"));
+        replaceUrlPlaceholder("endpoint",Configuration.getRequired("api_status"));
         replaceUrlPlaceholder("currentStatus",currentStatus);
 
     }
