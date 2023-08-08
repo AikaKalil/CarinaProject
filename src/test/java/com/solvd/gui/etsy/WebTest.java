@@ -1,28 +1,24 @@
 package com.solvd.gui.etsy;
 
 import com.nordstrom.automation.testng.DataProviders;
-import com.solvd.gui.common.HomePageCommon;
-import com.solvd.gui.desktop.CandlePage;
-import com.solvd.gui.desktop.CartPage;
-import com.solvd.gui.desktop.HomePage;
-import com.solvd.gui.desktop.SignInPage;
-import com.solvd.gui.ios.HomePageIOS;
+import com.solvd.gui.components.header.Header;
+import com.solvd.gui.pages.common.HomePageAbstract;
+import com.solvd.gui.pages.desktop.*;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class WebTest implements IAbstractTest {
 
     @Test
     @MethodOwner(owner = "akalil")
     public void validateHomePage() {
-        HomePageIOS homePage = (HomePageIOS) initPage(getDriver(), HomePageCommon.class);
+        HomePageAbstract homePage = initPage(getDriver(), HomePageAbstract.class);
         homePage.open();
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(homePage.isPageOpened(),"Home page is not opened");
+        assertTrue(homePage.isPageOpened(), "Home page is not opened");
         String expectedTitle = "Etsy - Shop for handmade, vintage, custom, and unique gifts for everyone";
         String actualTitle = getDriver().getTitle();
         String expectedURL = "https://www.etsy.com/?ref=lgo";
@@ -30,43 +26,61 @@ public class WebTest implements IAbstractTest {
         assertEquals(expectedTitle, actualTitle);
         assertEquals(expectedURL, actualURL);
     }
-    @Test(dataProvider = "testData", dataProviderClass = DataProviders.class)
+
+    @Test
     @MethodOwner(owner = "akalil")
-    public void negativeTestCaseSignIn(String email, String password){
-        HomePage homePage = new HomePage(getDriver());
+    public void invalidEmailTestSignIn() {
+        HomePageAbstract homePage = initPage(getDriver(), HomePageAbstract.class);
         homePage.open();
-        homePage.clickOnSignInBtn();
-        SignInPage signInPage=homePage.clickOnSignInBtn();
-        signInPage.signInFeature("m.aijamal@gmail.com","Akalil1234");
-        SoftAssert softAssert=new SoftAssert();
-        softAssert.assertEquals(signInPage.getErrorText(),"Email address is invalid.");
-        softAssert.assertAll();
+        assertTrue(homePage.isPageOpened(), "Home Page is not opened!");
+        Header header=homePage.getHeader();
+        SignInPage signInPage=header.clickOnSignInBtn();
+        signInPage.signIn("akalil@gmail.com","343r43");
+        signInPage.clickOnPopUpWindowSignInBtn();
+        assertEquals(signInPage.getErrorText(),"Email address is invalid.");
     }
 
     @Test
     @MethodOwner(owner = "akalil")
-    public void testSearchItem(){
-        HomePage homePage = new HomePage(getDriver());
+    public void validEmailTestSignIn() {
+        HomePageAbstract homePage = initPage(getDriver(), HomePageAbstract.class);
         homePage.open();
-        CandlePage candlePage=homePage.searchItem("candle");
-        candlePage.clickOnMostLoved();
-        candlePage.clickOnSecondItem();
-        candlePage.goToFirstOption();
-        candlePage.addToCart();
-        CartPage cartPage = candlePage.cartPage();
-        SoftAssert softAssert=new SoftAssert();
-        //here this one need to check also something
+        assertTrue(homePage.isPageOpened(), "Home Page is not opened!");
+        Header header=homePage.getHeader();
+        SignInPage signIn=header.clickOnSignInBtn();
+        signIn.signIn("m.aijamal07@icloud.com","AikaK07");
+        signIn.clickOnPopUpWindowSignInBtn();
+        assertEquals(signIn.getWelcomeBackMessage(),"Welcome to Etsy, Aika!");
+    }
+
+    @Test
+    @MethodOwner(owner = "akalil")
+    public void testCartPage() {
+        HomePageAbstract homePage = initPage(getDriver(), HomePageAbstract.class);
+        homePage.open();
+        assertTrue(homePage.isPageOpened(), "Home Page is not opened!");
+        Header header=homePage.getHeader();
+        CartPage cartPage=header.clickOnCartBtn();
+        assertEquals(cartPage.getEmptyCartMsg(),"Your cart is empty.");
     }
     @Test
     @MethodOwner(owner = "akalil")
-    public void testCartPage(){
-        HomePage homePage = new HomePage(getDriver());
+    public void testSearchItem() {
+        HomePageAbstract homePage = initPage(getDriver(), HomePageAbstract.class);
         homePage.open();
-        CartPage cartPage = homePage.clickOnCartBtn();
-        cartPage.clickOnRemove();
-        //this one needs to check empty message
-    }
+        assertTrue(homePage.isPageOpened(), "Home Page is not opened!");
+        Header header=homePage.getHeader();
+        ProductPage productPage=header.searchForProduct("candle");
+        productPage.clickOnMostLoved();
+        productPage.addToCart();
+        assertEquals(header.itemsInCartMsg(),"1 item in your cart");
 
+
+
+
+
+
+    }
 
 
 }

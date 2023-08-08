@@ -1,0 +1,82 @@
+[2023-08-08 02:07:48] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-08-08 02:07:48] [1] [INFO] TEST [api-testing - testSearchItem] STARTED at [09:07:48 2023-08-08]
+[2023-08-08 02:07:48] [1] [INFO] Starting driver session...
+[2023-08-08 02:07:50] [1] [INFO] Driver session started.
+[2023-08-08 02:07:50] [1] [INFO] INFO: opening url 'https://www.etsy.com/?ref=lgo'
+[2023-08-08 02:07:52] [1] [INFO] PASS: element 'searchBox' is clicked.
+[2023-08-08 02:07:53] [1] [INFO] PASS: keys 'candle' are sent to element 'searchBox'.
+[2023-08-08 02:07:57] [1] [INFO] PASS: element 'searchBtn' is clicked.
+[2023-08-08 02:07:59] [1] [INFO] PASS: element 'mostLoved' is clicked.
+[2023-08-08 02:08:00] [1] [ERROR] TEST [api-testing - testSearchItem] FAILED at [09:08:00 2023-08-08] - element not interactable
+  (Session info: chrome=115.0.5790.170)
+Build info: version: '4.8.1', revision: '8ebccac989'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '13.1', java.version: '11.0.18'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [5131a13477686e922de19795fdd3afa0, clickElement {id=712646FDA3FA9ED2B1C5D5DCF6FB2282_element_55}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 115.0.5790.170, chrome: {chromedriverVersion: 115.0.5790.170 (cc0d30c2ca5..., userDataDir: /var/folders/jk/71v8m08s5jj...}, goog:chromeOptions: {debuggerAddress: localhost:57286}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:bidiEnabled: false, se:cdp: ws://192.168.1.2:4444/sessi..., se:cdpVersion: 115.0.5790.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[RemoteWebDriver: chrome on MAC (5131a13477686e922de19795fdd3afa0)] -> xpath: //form[@action='/cart/listing.php']/input[@value='1461856497']]
+Session ID: 5131a13477686e922de19795fdd3afa0
+
+java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+com.zebrunner.carina.webdriver.listener.EventFiringSeleniumCommandExecutor.execute(EventFiringSeleniumCommandExecutor.java:52)
+org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
+org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:566)
+org.openqa.selenium.support.decorators.WebDriverDecorator.call(WebDriverDecorator.java:247)
+org.openqa.selenium.support.decorators.DefaultDecorated.call(DefaultDecorated.java:48)
+org.openqa.selenium.support.decorators.WebDriverDecorator.lambda$createProxy$2(WebDriverDecorator.java:314)
+net.bytebuddy.renamed.java.lang.Object$ByteBuddy$PEddk70E.click(Unknown Source)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:566)
+org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
+com.sun.proxy.$Proxy88.click(Unknown Source)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement$3.doClick(ExtendedWebElement.java:1537)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.executeAction(ExtendedWebElement.java:1397)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.overrideAction(ExtendedWebElement.java:1531)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.doAction(ExtendedWebElement.java:1510)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.doAction(ExtendedWebElement.java:1487)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:416)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:406)
+com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:397)
+com.solvd.gui.pages.desktop.ProductPage.addToCart(ProductPage.java:32)
+com.solvd.gui.etsy.WebTest.testSearchItem(WebTest.java:75)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:566)
+org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+org.testng.TestRunner.privateRun(TestRunner.java:829)
+org.testng.TestRunner.run(TestRunner.java:602)
+org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+org.testng.SuiteRunner.run(SuiteRunner.java:330)
+org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+org.testng.TestNG.runSuites(TestNG.java:1099)
+org.testng.TestNG.run(TestNG.java:1067)
+com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
