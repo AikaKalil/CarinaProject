@@ -1,39 +1,65 @@
 package com.solvd.gui.pages.desktop;
+
 import com.solvd.gui.pages.common.ProductPageAbstract;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP,parentClass= ProductPageAbstract.class)
-public class ProductPage extends ProductPageAbstract {
-    @FindBy(xpath="//h3[contains(text(), 'Most Loved')]")
-    private ExtendedWebElement mostLoved;
-    @FindBy(xpath="(//li[contains(@class, 'wt-grid__item-xs-6')])[2]")
-    private ExtendedWebElement chooseSecondProduct;
-    @FindBy(xpath="//select[@id='variation-selector-0']/option[position() > 1][1]]")
-    private ExtendedWebElement selectAnOptionBtn;
-    @FindBy(xpath="(//div[@class='search-half-unit-mt']//button[@type = 'submit'])[2]")
-    private ExtendedWebElement addToCartBtn;
-    @FindBy(xpath="//a[@href='/cart' and contains(@class, 'wt-btn--filled')]")
-    private ExtendedWebElement popUpGoToCartBtn;
+import java.util.List;
 
-    public ProductPage(WebDriver driver){
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageAbstract.class)
+public class ProductPage extends ProductPageAbstract {
+
+    @FindBy(xpath = "//button[@id='search-filter-button']")
+    private ExtendedWebElement allFiltersBtn;
+    @FindBy(xpath = "//input[@id='special-offers-on-sale']")
+    private ExtendedWebElement onSale;
+
+    @FindBy(xpath = "//button[@aria-label='Apply']")
+    private ExtendedWebElement applyBtn;
+    @FindBy(xpath = "//a[contains(., 'On sale')]")
+    private ExtendedWebElement sortedOnSaleIcon;
+
+    @FindBy(xpath = "//span[text()='Add to cart']")
+    private List<ExtendedWebElement> addToCartBtn;
+    //div[@id='cart-edit-panel-overlay']
+    @FindBy(xpath = "//div[@id='cart-edit-panel-overlay']")
+    private ExtendedWebElement wholePage;
+
+    public ProductPage(WebDriver driver) {
         super(driver);
     }
-    public void clickOnMostLoved(){
-        mostLoved.click();
-    }
-    public void clickOnSecondItem(){
-        chooseSecondProduct.click();
-    }
-    public void addToCart(){
-        addToCartBtn.click();
+
+    @Override
+    public void clickAllFilters() {
+        allFiltersBtn.click();
     }
 
-    public CartPage cartPage(){
-        popUpGoToCartBtn.click();
+    @Override
+    public void selectOnSale() {
+        onSale.click();
+    }
+
+    @Override
+    public void clickApplyBtn() {
+        applyBtn.click();
+    }
+
+    @Override
+    public String getOnSaleText() {
+        return sortedOnSaleIcon.getText();
+    }
+    public void clickAddToCartBtn(int index) {
+        if (index>=0 && index<addToCartBtn.size()) {
+            ExtendedWebElement desiredButton = addToCartBtn.get(index);
+            desiredButton.click();
+        } else {
+            System.out.println("Desired index is out of range.");
+        }
+    }
+    public CartPage clickPage(){
+        wholePage.click();
         return new CartPage(driver);
     }
-
 }

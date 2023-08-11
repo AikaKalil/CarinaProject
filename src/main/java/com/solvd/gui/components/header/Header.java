@@ -1,6 +1,7 @@
 package com.solvd.gui.components.header;
 
 import com.solvd.gui.pages.desktop.CartPage;
+import com.solvd.gui.pages.desktop.HomePage;
 import com.solvd.gui.pages.desktop.ProductPage;
 import com.solvd.gui.pages.desktop.SignInPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -22,8 +23,7 @@ public class Header extends HeaderAbstract {
     private ExtendedWebElement searchBtn;
     @FindBy(xpath = "//span[@id='logo']")
     private ExtendedWebElement icon;
-    @FindBy(xpath = "//h1[text() = '1 item in your cart']")
-    private ExtendedWebElement itemsInCart;
+
 
     public Header(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
@@ -35,7 +35,7 @@ public class Header extends HeaderAbstract {
     }
 
     @Override
-    public SignInPage clickOnSignInBtn() {
+    public SignInPage clickOnSignInBtnHP() {
         signInButtonInHP.click();
         return new SignInPage(driver);
     }
@@ -54,10 +54,10 @@ public class Header extends HeaderAbstract {
         return new ProductPage(driver);
     }
 
-    public CartPage itemsInCartMsg() {
-        itemsInCart.getText();
-        return new CartPage(driver);
+    @Override
+    public ProductPage clickOnSearchBtn() {
+        searchBtn.click();
+        return new ProductPage(driver);
     }
-
 }
 

@@ -12,19 +12,23 @@ public class CartPage extends CartPageAbstract {
     private ExtendedWebElement emptyCartMsg;
     @FindBy(xpath = "//a[@rel='remove']")
     private ExtendedWebElement removeBtn;
-
-
+    @FindBy(xpath = "//h1[text() = '1 item in your cart']")
+    private ExtendedWebElement itemsInCart;
 
     public CartPage(WebDriver driver) {
         super(driver);
     }
-    public void clickOnRemove(){
+
+    public void clickOnRemoveBtn() {
         removeBtn.click();
     }
-    public String getEmptyCartMsg(){
+
+    public String getEmptyCartText() {
         return emptyCartMsg.getText();
     }
 
-
+    public String getItemsInCartText() {
+        return itemsInCart.getText();
+    }
 
 }
