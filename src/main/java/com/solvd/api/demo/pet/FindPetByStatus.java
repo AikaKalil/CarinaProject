@@ -13,8 +13,8 @@ public class FindPetByStatus extends AbstractApiMethodV2 {
     public FindPetByStatus(String currentStatus) {
         replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));
         replaceUrlPlaceholder("base_path", Configuration.getRequired("api_path"));
-        replaceUrlPlaceholder("endpoint",Configuration.getRequired("api_status"));
-        replaceUrlPlaceholder("currentStatus",currentStatus);
+        replaceUrlPlaceholder("endpoint", Configuration.getRequired("api_status"));
+        replaceUrlPlaceholder("currentStatus", currentStatus);
 
     }
 }

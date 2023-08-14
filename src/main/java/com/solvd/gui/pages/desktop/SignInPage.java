@@ -14,7 +14,10 @@ public class SignInPage extends SignInPageAbstract {
     ExtendedWebElement emailInputField;
     @FindBy(xpath = "//input[@id='join_neu_password_field']")
     ExtendedWebElement passwordField;
-    @FindBy(xpath = "//div[@class='wt-validation']//button[@type='submit']")
+    @FindBy(xpath = "//input[@id='join_neu_first_name_field']")
+    ExtendedWebElement nameInputField;
+
+    @FindBy(xpath = "//button[contains(@class, 'signin-header-action')]")
     ExtendedWebElement signInBtn;
     @FindBy(xpath = "//div[@id='aria-join_neu_email_field-error']")
     private ExtendedWebElement errorMsg;
@@ -44,13 +47,25 @@ public class SignInPage extends SignInPageAbstract {
     }
 
     @Override
+    public void registerCredentials(String email, String name, String password) {
+        emailInputField.type(email);
+        nameInputField.type(name);
+        passwordField.type(password);
+    }
+
+    @Override
     public void clickOnPopUpWindowSignInBtn() {
         popUpSignInBtn.click();
     }
 
     @Override
+    public void clickRegisterBtn() {
+        registerBtn.click();
+    }
+
+    @Override
     public void clickOnPopUpWindowRegisterBtn() {
-        popUpSignInBtn.click();
+        registerBtnPopUp.click();
     }
 
     @Override

@@ -10,6 +10,8 @@ public abstract class SignInPageAbstract extends AbstractPage {
 
     protected abstract void typeCredentials(String email, String password);
 
+    protected abstract void registerCredentials(String email, String name, String password);
+
     protected abstract String getErrorText();
 
     protected abstract String getWelcomeBackMessage();
@@ -17,6 +19,8 @@ public abstract class SignInPageAbstract extends AbstractPage {
     protected abstract void clickOnPopUpWindowSignInBtn();
 
     protected abstract void clickOnPopUpWindowRegisterBtn();
+
+    protected abstract void clickRegisterBtn();
 
     protected abstract String getRegisterErrorText();
 

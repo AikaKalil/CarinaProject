@@ -1,6 +1,6 @@
 package com.solvd.gui.pages.desktop;
 
-import com.solvd.gui.pages.common.ProductPageAbstract;
+import com.solvd.gui.pages.common.ProductsListPageAbstract;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -8,13 +8,13 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageAbstract.class)
-public class ProductPage extends ProductPageAbstract {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductsListPageAbstract.class)
+public class ProductsListPage extends ProductsListPageAbstract {
 
     @FindBy(xpath = "//button[@id='search-filter-button']")
     private ExtendedWebElement allFiltersBtn;
-    @FindBy(xpath = "//input[@id='special-offers-on-sale']")
-    private ExtendedWebElement onSale;
+    @FindBy(xpath = "//div[contains(@class, 'wt-checkbox')]/input[@id='special-offers-on-sale']")
+    private ExtendedWebElement onSaleCheckBox;
 
     @FindBy(xpath = "//button[@aria-label='Apply']")
     private ExtendedWebElement applyBtn;
@@ -22,12 +22,11 @@ public class ProductPage extends ProductPageAbstract {
     private ExtendedWebElement sortedOnSaleIcon;
 
     @FindBy(xpath = "//span[text()='Add to cart']")
-    private List<ExtendedWebElement> addToCartBtn;
-    //div[@id='cart-edit-panel-overlay']
+    private ExtendedWebElement addToCartBtn;
     @FindBy(xpath = "//div[@id='cart-edit-panel-overlay']")
     private ExtendedWebElement wholePage;
 
-    public ProductPage(WebDriver driver) {
+    public ProductsListPage(WebDriver driver) {
         super(driver);
     }
 
@@ -37,8 +36,8 @@ public class ProductPage extends ProductPageAbstract {
     }
 
     @Override
-    public void selectOnSale() {
-        onSale.click();
+    public void selectOnSaleCheckBox() {
+        onSaleCheckBox.clickByJs();
     }
 
     @Override
@@ -50,15 +49,13 @@ public class ProductPage extends ProductPageAbstract {
     public String getOnSaleText() {
         return sortedOnSaleIcon.getText();
     }
-    public void clickAddToCartBtn(int index) {
-        if (index>=0 && index<addToCartBtn.size()) {
-            ExtendedWebElement desiredButton = addToCartBtn.get(index);
-            desiredButton.click();
-        } else {
-            System.out.println("Desired index is out of range.");
-        }
+
+    @Override
+    public void clickAddToCartBtn() {
+        addToCartBtn.click();
     }
-    public CartPage clickPage(){
+
+    public CartPage clickPage() {
         wholePage.click();
         return new CartPage(driver);
     }

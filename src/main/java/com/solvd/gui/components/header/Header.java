@@ -1,8 +1,7 @@
 package com.solvd.gui.components.header;
 
 import com.solvd.gui.pages.desktop.CartPage;
-import com.solvd.gui.pages.desktop.HomePage;
-import com.solvd.gui.pages.desktop.ProductPage;
+import com.solvd.gui.pages.desktop.ProductsListPage;
 import com.solvd.gui.pages.desktop.SignInPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
@@ -10,18 +9,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class Header extends HeaderAbstract {
-    @FindBy(xpath = "//li//button[contains(.,'Sign in')]")
+    @FindBy(xpath = ".//li//button[contains(.,'Sign in')]")
     private ExtendedWebElement signInButtonInHP;
 
-    @FindBy(xpath = "//a[contains(@href,'etsy.com/cart')]")
+    @FindBy(xpath = ".//a[contains(@href,'etsy.com/cart')]")
     private ExtendedWebElement cartButton;
 
-    @FindBy(xpath = "//input[@id='global-enhancements-search-query']")
+    @FindBy(xpath = ".//input[@id='global-enhancements-search-query']")
     private ExtendedWebElement searchBox;
 
-    @FindBy(xpath = "//button[@aria-label='Search']")
+    @FindBy(xpath = ".//button[@aria-label='Search']")
     private ExtendedWebElement searchBtn;
-    @FindBy(xpath = "//span[@id='logo']")
+    @FindBy(xpath = ".//span[@id='logo']")
     private ExtendedWebElement icon;
 
 
@@ -47,17 +46,17 @@ public class Header extends HeaderAbstract {
     }
 
     @Override
-    public ProductPage searchForProduct(String productName) {
+    public ProductsListPage searchForProduct(String productName) {
         searchBox.click();
         searchBox.type(productName);
         searchBtn.click();
-        return new ProductPage(driver);
+        return new ProductsListPage(driver);
     }
 
     @Override
-    public ProductPage clickOnSearchBtn() {
+    public ProductsListPage clickOnSearchBtn() {
         searchBtn.click();
-        return new ProductPage(driver);
+        return new ProductsListPage(driver);
     }
 }
 

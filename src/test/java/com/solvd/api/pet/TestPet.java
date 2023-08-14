@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import java.lang.invoke.MethodHandles;
+import java.util.List;
 
 import static org.testng.Assert.*;
 
@@ -24,33 +25,29 @@ public class TestPet implements IAbstractTest{
             postPet.validateResponseAgainstSchema("api/pet/_post/valid_rs.schema");
         }
 
-        @Test(dataProvider = "idProvider",dataProviderClass = TestDataProvider.class)
+        @Test(dataProvider = "testGetPetByIdData",dataProviderClass = TestDataProvider.class)
         @MethodOwner(owner="akalil")
-        public void testGetPetById(String petId){
+        public void testGetPetById(String petId,String petName,String petStatus){
             GetPet getPet=new GetPet(petId);
             Response response=getPet.callAPIExpectSuccess();
             Logger.info("Getting pet by id");
-            if(petId.equals("1233")){
-                String actualId = response.jsonPath().getString("id");
-                assertEquals(actualId, "1233", "Pet ID mismatch in the response!");
-                String actualName = response.jsonPath().getString("name");
-                assertEquals(actualName,"Fluffy","Pet name mismatch in the response!");
-            }else if(petId.equals("1122")){
-                String actualId = response.jsonPath().getString("id");
-                assertEquals(actualId, "1122", "Pet ID mismatch in the response!");
-                String actualStatus = response.jsonPath().getString("status");
-                assertEquals(actualStatus,"available","Pet status mismatch in the response!");
-            }
+            String actualId = response.jsonPath().getString("id");
+            assertEquals(actualId, petId, "Pet ID mismatch in the response!");
+            String actualName = response.jsonPath().getString("name");
+            assertEquals(actualName,petName,"Pet name mismatch in the response!");
+            String actualStatus = response.jsonPath().getString("status");
+            assertEquals(actualStatus,petStatus,"Pet status mismatch in the response!");
             getPet.validateResponseAgainstSchema("api/pet/_get/rs.schema");
         }
-        @Test(dataProvider = "statusProvider",dataProviderClass = TestDataProvider.class)
+        @Test(dataProvider = "testFindPetByStatusData",dataProviderClass = TestDataProvider.class)
         @MethodOwner(owner="akalil")
         public void testFindPetByStatus(String currentStatus){
             FindPetByStatus findPetByStatus=new FindPetByStatus(currentStatus);
             Response response=findPetByStatus.callAPIExpectSuccess();
             Logger.info("Getting pet by status is successful");
-            String status = response.jsonPath().getString("status");
-            assertNotNull(status, "Status field is not present in the response");
+            List<String> statuses = response.jsonPath().getList("status");
+            boolean isStatusesRight=statuses.stream().allMatch(e -> e.equals(currentStatus));
+            assertTrue(isStatusesRight, "Pet status doesn't match expected result");
             findPetByStatus.validateResponseAgainstSchema("api/pet/_get/find_rs.schema");
         }
 

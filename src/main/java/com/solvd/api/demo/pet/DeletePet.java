@@ -10,7 +10,7 @@ import com.zebrunner.carina.api.http.HttpResponseStatusType;
 import com.zebrunner.carina.utils.config.Configuration;
 
 @Endpoint(url= "${base_url}${base_path}${endpoint}", methodType = HttpMethodType.DELETE)
-@RequestTemplatePath(path="api/pet/_delete/rq.json")
+@RequestTemplatePath(path = "api/pet/_delete/rq.json")
 @ResponseTemplatePath(path="api/pet/_delete/rs.json")
 @SuccessfulHttpStatus(status= HttpResponseStatusType.OK_200)
 public class DeletePet extends AbstractApiMethodV2 {
